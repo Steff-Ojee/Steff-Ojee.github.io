@@ -92,28 +92,17 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(10, 36, 99, 0.7), rgba(30, 136, 229, 0.5)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%230A2463" width="1200" height="800"/></svg>');
+                url('Steff.jpeg');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
             position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(rgba(10, 36, 99, 0.7), rgba(30, 136, 229, 0.5)), 
-            url('Steff.jpeg');
-        }
+}
 
         .hero-content {
             position: relative;
