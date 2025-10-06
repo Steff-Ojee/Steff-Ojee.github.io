@@ -1167,7 +1167,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Stephanie Ojee. Designed with purpose.</p>
+        <p>&copy; 2025 Stephanie Ojee.</p>
     </footer>
 
     <script>
