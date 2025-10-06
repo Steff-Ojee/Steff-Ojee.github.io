@@ -92,9 +92,9 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(10, 36, 99, 0.7), rgba(30, 136, 229, 0.5)), 
-                url('Steff.jpeg');
+                        url('Steff.jpeg');
             background-size: cover;
-            background-position: center 20%;
+            background-position: center 30%;
             background-repeat: no-repeat;
             display: flex;
             align-items: center;
@@ -102,7 +102,17 @@
             text-align: center;
             color: var(--white);
             position: relative;
-}
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 36, 99, 0.6);
+        }
 
         .hero-content {
             position: relative;
@@ -1031,7 +1041,7 @@
 
     <section class="certifications-section">
         <div class="section-header">
-            <div class="section-label">Specialized Training</div>
+            <div class="section-label">Training</div>
             <h2 class="section-title">Programs & Certifications</h2>
             <p class="section-description">Intensive training from leading institutions in climate finance and sustainability</p>
         </div>
@@ -1049,7 +1059,7 @@
                     <h3>Carbon Dioxide Removal Methodologies</h3>
                     <div class="cert-org">AirMiners Bootcamp | 2024</div>
                 </div>
-                <p>Specialized bootcamp on cutting-edge carbon dioxide removal technologies and methodologies. I gained expertise in emerging CDR approaches, measurement techniques, and the science behind negative emissions technologies.</p>
+                <p>Specialized bootcamp on cutting-edge carbon dioxide removal technologies and methodologies. Gained expertise in emerging CDR approaches, measurement techniques, and the science behind negative emissions technologies.</p>
             </div>
 
             <div class="cert-spotlight">
@@ -1096,7 +1106,7 @@
                         <span class="tag">MRV Systems</span>
                     </div>
                     <p>Comprehensive analytical framework for assessing Kenya's sectoral emissions and identifying carbon finance opportunities. Built with advanced data visualization and quantitative modeling.</p>
-                    <a href="https://github.com/Steff-Ojee/Kenya-GHG-dashboard" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://steff-ojee.github.io/Kenya-GHG-dashboard/" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
         </div>
@@ -1110,9 +1120,10 @@
         <div class="publications-grid">
             <div class="publication-card">
                 <div class="pub-year">2024</div>
-                <h3>Analysis of Kenya's GHG Emissions for Climate Finance Planning</h3>
+                <h3>Analysis of Kenya's GHG Emissions</h3>
                 <p class="pub-type">Independent Research & Dashboard</p>
                 <p>Comprehensive analysis of Kenya's greenhouse gas emissions across sectors, providing strategic insights for climate finance opportunities and policy interventions.</p>
+                <a href="https://steff-ojee.github.io/Kenya-GHG-dashboard/" target="_blank" class="project-link">View Dashboard →</a>
             </div>
 
             <div class="publication-card">
@@ -1120,6 +1131,7 @@
                 <h3>Area Neutrality: Safeguarding Urban Biodiversity with a New Land Management Framework in Trondheim</h3>
                 <p class="pub-type">UN Sustainability Centre</p>
                 <p>Co-authored research proposing innovative land management strategies to balance urban development with biodiversity conservation in Norwegian cities.</p>
+                <a href="https://iopscience.iop.org/article/10.1088/1755-1315/1122/1/012017" target="_blank" class="project-link">Read Paper →</a>
             </div>
 
             <div class="publication-card">
@@ -1127,6 +1139,7 @@
                 <h3>Regreening Africa: A Bottom-up Transformation of Degrading Lands</h3>
                 <p class="pub-type">ETFRN Publication</p>
                 <p>Co-authored contribution examining grassroots approaches to landscape restoration and sustainable land management across 7 African countries.</p>
+                <a href="https://regreeningafrica.org/wp-content/uploads/2021/01/ETFRNnews60-Restoring-African-Drylands.pdf" target="_blank" class="project-link">Read Publication →</a>
             </div>
         </div>
     </section>
