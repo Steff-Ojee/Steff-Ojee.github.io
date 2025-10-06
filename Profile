@@ -1042,7 +1042,7 @@
     <section class="certifications-section">
         <div class="section-header">
             <div class="section-label">Specialized Training</div>
-            <h2 class="section-title">Elite Programs & Certifications</h2>
+            <h2 class="section-title">Programs & Certifications</h2>
             <p class="section-description">Intensive training from leading institutions in climate finance and sustainability</p>
         </div>
         <div class="cert-spotlight-grid">
@@ -1059,7 +1059,7 @@
                     <h3>Carbon Dioxide Removal Methodologies</h3>
                     <div class="cert-org">AirMiners Bootcamp | 2024</div>
                 </div>
-                <p>Specialized bootcamp on cutting-edge carbon dioxide removal technologies and methodologies. Gained expertise in emerging CDR approaches, measurement techniques, and the science behind negative emissions technologies.</p>
+                <p>Specialized bootcamp on cutting-edge carbon dioxide removal technologies and methodologies. I gained expertise in emerging CDR approaches, measurement techniques, and the science behind negative emissions technologies.</p>
             </div>
 
             <div class="cert-spotlight">
