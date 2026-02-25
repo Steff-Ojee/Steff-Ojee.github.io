@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Stephanie Ojee</title>
+  <style>
+/* ── SHARED ── */
+/* ═══════════════════════════════════════════════
+   STEPHANIE OJEE — Shared Stylesheet
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+:root {
+  --cream:  #ffeedb;
+  --peach:  #ffdec7;
+  --rose:   #efa3a0;
+  --plum:   #8b597b;
+  --earth:  #493129;
+  --ink:    #2a1a10;
+  --font-serif: 'Nanum Myeongjo', Georgia, serif;
+  --font-sans:  'Nanum Gothic', sans-serif;
+  --nav-h: 70px;
+  --max-w: 1160px;
+  --gutter: 4rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--earth);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-top: var(--nav-h);
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── NAV ──────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--gutter);
+  background: rgba(255,238,219,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(73,49,41,0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--earth);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--plum);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { opacity: 1; }
+.nav-links a.active::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
+
+/* ─── PAGE HERO ─────────────────────── */
+.page-hero {
+  background: var(--earth);
+  padding: 5rem var(--gutter) 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  right: -1rem; bottom: -3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(10rem, 20vw, 22rem);
+  font-weight: 800;
+  color: rgba(255,238,219,0.035);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.page-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--plum);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.page-title em { font-style: italic; color: var(--rose); }
+
+.page-subtitle {
+  max-width: 540px;
+  margin-top: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,238,219,0.55);
+}
+
+/* ─── SECTION LABEL ─────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--rose);
+}
+
+.section-label.light { color: var(--rose); }
+.section-label.light::before { background: var(--plum); }
+
+/* ─── BUTTONS ───────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--earth);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--earth);
+  transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover { background: transparent; color: var(--earth); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rose);
+  transition: gap 0.2s, color 0.2s;
+}
+.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
+
+/* ─── TAGS ──────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+}
+.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
+.tag-plum  { background: var(--plum);          color: var(--cream); }
+.tag-rose  { background: var(--rose);          color: var(--earth); }
+.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
+.tag-peach { background: var(--peach);         color: var(--earth); }
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 2rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,238,219,0.4);
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,238,219,0.28);
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--rose); }
+.footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255,238,219,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ────────────────────── */
+@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
+@media (max-width: 768px) {
+  :root { --gutter: 1.5rem; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--cream);
+    padding: 2rem var(--gutter);
+    border-top: 1px solid rgba(73,49,41,0.1);
+    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .footer-nav { display: none; }
+  footer { justify-content: center; text-align: center; }
+}
+
+/* ── PAGE ── */
+
+/* ── SHARED ── */
+/* ═══════════════════════════════════════════════
+   STEPHANIE OJEE — Shared Stylesheet
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+:root {
+  --cream:  #ffeedb;
+  --peach:  #ffdec7;
+  --rose:   #efa3a0;
+  --plum:   #8b597b;
+  --earth:  #493129;
+  --ink:    #2a1a10;
+  --font-serif: 'Nanum Myeongjo', Georgia, serif;
+  --font-sans:  'Nanum Gothic', sans-serif;
+  --nav-h: 70px;
+  --max-w: 1160px;
+  --gutter: 4rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--earth);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-top: var(--nav-h);
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── NAV ──────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--gutter);
+  background: rgba(255,238,219,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(73,49,41,0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--earth);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--plum);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { opacity: 1; }
+.nav-links a.active::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
+
+/* ─── PAGE HERO ─────────────────────── */
+.page-hero {
+  background: var(--earth);
+  padding: 5rem var(--gutter) 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  right: -1rem; bottom: -3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(10rem, 20vw, 22rem);
+  font-weight: 800;
+  color: rgba(255,238,219,0.035);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.page-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--plum);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.page-title em { font-style: italic; color: var(--rose); }
+
+.page-subtitle {
+  max-width: 540px;
+  margin-top: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,238,219,0.55);
+}
+
+/* ─── SECTION LABEL ─────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--rose);
+}
+
+.section-label.light { color: var(--rose); }
+.section-label.light::before { background: var(--plum); }
+
+/* ─── BUTTONS ───────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--earth);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--earth);
+  transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover { background: transparent; color: var(--earth); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rose);
+  transition: gap 0.2s, color 0.2s;
+}
+.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
+
+/* ─── TAGS ──────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+}
+.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
+.tag-plum  { background: var(--plum);          color: var(--cream); }
+.tag-rose  { background: var(--rose);          color: var(--earth); }
+.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
+.tag-peach { background: var(--peach);         color: var(--earth); }
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 2rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,238,219,0.4);
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,238,219,0.28);
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--rose); }
+.footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255,238,219,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ────────────────────── */
+@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
+@media (max-width: 768px) {
+  :root { --gutter: 1.5rem; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--cream);
+    padding: 2rem var(--gutter);
+    border-top: 1px solid rgba(73,49,41,0.1);
+    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .footer-nav { display: none; }
+  footer { justify-content: center; text-align: center; }
+}
+
+/* ── PAGE ── */
+
+    .projects-body {
+      padding: 6rem var(--gutter);
+    }
+
+    .proj-articles {
+      display: flex;
+      flex-direction: column;
+      max-width: var(--max-w);
+    }
+
+    /* ─── PROJECT ROW ─── */
+    .proj-article {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 5rem;
+      padding: 5rem 0;
+      border-top: 1px solid rgba(73,49,41,0.1);
+    }
+
+    .proj-article:last-child {
+      border-bottom: 1px solid rgba(73,49,41,0.1);
+    }
+
+    .proj-meta {
+      padding-top: 0.4rem;
+      position: sticky;
+      top: calc(var(--nav-h) + 2rem);
+      height: fit-content;
+    }
+
+    .proj-number {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(73,49,41,0.1);
+      margin-bottom: 0.8rem;
+    }
+
+    .proj-year-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-bottom: 1rem;
+    }
+
+    .proj-tags-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .proj-content {}
+
+    .proj-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 800;
+      color: var(--earth);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .proj-headline em { font-style: italic; color: var(--plum); }
+
+    .proj-body p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--ink);
+      opacity: 0.78;
+      margin-bottom: 1.4rem;
+    }
+    .proj-body p:last-child { margin-bottom: 0; }
+
+    .proj-callout {
+      background: var(--peach);
+      border-left: 3px solid var(--plum);
+      padding: 1.4rem 1.8rem;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--earth);
+      font-style: italic;
+    }
+
+    .proj-expertise-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(73,49,41,0.1);
+    }
+
+    .proj-expertise-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .proj-article { grid-template-columns: 1fr; gap: 2rem; }
+      .proj-meta { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">S.Ojee</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">Work</div>
+    <p class="page-label">Projects &amp; Publications</p>
+    <h1 class="page-title">Work that<br>leaves a <em>record</em></h1>
+    <p class="page-subtitle">
+      Each project here is a demonstration of applied knowledge — working tools,
+      original research, and field-tested thinking that reflects the full range of practice.
+    </p>
+  </div>
+
+  <section class="projects-body">
+    <div class="proj-articles">
+
+      <!-- 01 — Carbon Calculator -->
+      <article class="proj-article">
+        <div class="proj-meta">
+          <div class="proj-number">01</div>
+          <div class="proj-year-label">2024 — Ongoing</div>
+          <div class="proj-tags-col">
+            <span class="tag tag-rose">Interactive Tool</span>
+            <span class="tag tag-dark">Carbon Markets</span>
+            <span class="tag tag-dark">Kenya Regs 2024</span>
+            <span class="tag tag-dark">Article 6.2 / ITMOs</span>
+            <span class="tag tag-dark">Legal Compliance</span>
+          </div>
+          <a href="https://steff-ojee.github.io/carbon-benefit-calculator/" target="_blank" class="link-arrow">Open Calculator →</a>
+        </div>
+        <div class="proj-content">
+          <h2 class="proj-headline">Kenya Carbon Project<br><em>Benefit-Sharing Calculator</em></h2>
+          <div class="proj-body">
+            <p>
+              Kenya's Climate Change (Carbon Markets) Regulations, 2024 — Legal Notice No. 84 —
+              are among the most detailed carbon market frameworks on the continent, and almost
+              nobody had translated them into a usable decision-support tool. This calculator
+              does exactly that: it computes the full financial obligations for any carbon project
+              operating in Kenya — mandatory community benefit-sharing (differentiated by land
+              type and proponent nationality), Climate Change Fund levies, NEMA issuance fees,
+              and net developer revenue — all live, in a single interface.
+            </p>
+
+            <div class="proj-callout">
+              What makes this technically significant is the Article 6.2 layer. The tool
+              includes complete logic for internationally transferred mitigation outcomes
+              (ITMOs) — the corresponding adjustment fee structure, its remittance split
+              to the Climate Change Fund, and contextual information on Kenya's active
+              bilateral agreements with Switzerland and Sweden, as well as the GGGI-supported
+              pipeline with Norway, Singapore, and New Zealand.
+            </div>
+
+            <p>
+              Building this required not just reading the regulations, but understanding how
+              they interact — land classification rules, proponent nationality schedules, fee
+              hierarchies, and the distinction between domestic voluntary markets and
+              Article 6.2 authorization pathways. This is the level of market mechanics that
+              separates generalist ESG advisors from genuine carbon market practitioners.
+              For any institution entering Kenya's carbon market, this tool shortens weeks
+              of legal review into minutes.
+            </p>
+
+            <div class="proj-expertise-bar">
+              <span class="proj-expertise-label">Demonstrates:</span>
+              <span class="tag tag-dark">Carbon market regulation literacy</span>
+              <span class="tag tag-dark">Article 6 mechanics</span>
+              <span class="tag tag-dark">Legal instrument translation</span>
+              <span class="tag tag-dark">Practitioner tool design</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 — GHG Dashboard -->
+      <article class="proj-article">
+        <div class="proj-meta">
+          <div class="proj-number">02</div>
+          <div class="proj-year-label">2024 — Ongoing</div>
+          <div class="proj-tags-col">
+            <span class="tag tag-rose">Dashboard</span>
+            <span class="tag tag-dark">GHG Accounting</span>
+            <span class="tag tag-dark">Data Visualization</span>
+            <span class="tag tag-dark">MRV Systems</span>
+            <span class="tag tag-dark">Climate Finance</span>
+          </div>
+          <a href="https://steff-ojee.github.io/Kenya-GHG-dashboard/" target="_blank" class="link-arrow">View Dashboard →</a>
+        </div>
+        <div class="proj-content">
+          <h2 class="proj-headline">Kenya GHG<br><em>Emissions Dashboard</em></h2>
+          <div class="proj-body">
+            <p>
+              Kenya publishes greenhouse gas inventory data — but it lives in PDFs, annexes,
+              and technical reports that are largely inaccessible to the decision-makers
+              who need them most: investors, development finance institutions, policy teams,
+              and corporate sustainability leads assessing country-level climate exposure
+              and opportunity. This dashboard was built to close that gap.
+            </p>
+            <p>
+              The work involved sourcing, cleaning, and structuring Kenya's national GHG data
+              across five sectors — energy, agriculture, land use and forestry (LULUCF), waste,
+              and industrial processes — then designing visualizations that reveal the structural
+              story: which sectors dominate emissions, how trajectories have shifted over time,
+              where mitigation potential concentrates, and how Kenya's emissions profile compares
+              to NDC commitments.
+            </p>
+
+            <div class="proj-callout">
+              This is MRV applied as analytical infrastructure. The ability to take raw national
+              inventory data and turn it into something a CFO or an Article 6.2 buyer can use
+              in a conversation is a specific and undervalued skill in East African climate
+              finance — one that directly supports investment due diligence, carbon project
+              siting, and NDC-aligned portfolio strategy.
+            </div>
+
+            <div class="proj-expertise-bar">
+              <span class="proj-expertise-label">Demonstrates:</span>
+              <span class="tag tag-dark">National inventory analysis</span>
+              <span class="tag tag-dark">MRV systems thinking</span>
+              <span class="tag tag-dark">Data storytelling</span>
+              <span class="tag tag-dark">Climate finance due diligence</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 — Area Neutrality -->
+      <article class="proj-article">
+        <div class="proj-meta">
+          <div class="proj-number">03</div>
+          <div class="proj-year-label">2021</div>
+          <div class="proj-tags-col">
+            <span class="tag tag-rose">Peer-Reviewed</span>
+            <span class="tag tag-dark">Urban Biodiversity</span>
+            <span class="tag tag-dark">Land Use Policy</span>
+            <span class="tag tag-dark">IOP Environmental Science</span>
+          </div>
+          <a href="https://iopscience.iop.org/article/10.1088/1755-1315/1122/1/012017" target="_blank" class="link-arrow">Read Paper →</a>
+        </div>
+        <div class="proj-content">
+          <h2 class="proj-headline">Area Neutrality: Safeguarding<br><em>Urban Biodiversity in Trondheim</em></h2>
+          <div class="proj-body">
+            <p>
+              Published in IOP Environmental Science, this co-authored research tackled a
+              deceptively difficult policy problem: how do you allow a city to grow without
+              systematically eroding the ecological fabric that makes it liveable? The paper
+              proposes an area neutrality framework — a land management approach that requires
+              development to offset ecological losses through restoration or conservation
+              elsewhere, creating a functional balance sheet for urban biodiversity.
+            </p>
+            <p>
+              The research was grounded in real municipal planning data from Trondheim, Norway,
+              and required synthesizing international environmental law, urban planning theory,
+              ecological monitoring principles, and local governance constraints into a framework
+              with practical application — not just theoretical elegance.
+            </p>
+
+            <div class="proj-callout">
+              The policy logic here translates directly to nature-related disclosure work.
+              The conceptual architecture — baseline assessment, impact accounting, mitigation
+              hierarchy, and offset design — maps closely onto TNFD and biodiversity net gain
+              frameworks now entering corporate reporting requirements globally.
+            </div>
+
+            <div class="proj-expertise-bar">
+              <span class="proj-expertise-label">Demonstrates:</span>
+              <span class="tag tag-dark">Environmental policy design</span>
+              <span class="tag tag-dark">Biodiversity accounting</span>
+              <span class="tag tag-dark">Research-to-framework translation</span>
+              <span class="tag tag-dark">Nature-related disclosure thinking</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 — Regreening Africa -->
+      <article class="proj-article">
+        <div class="proj-meta">
+          <div class="proj-number">04</div>
+          <div class="proj-year-label">2020</div>
+          <div class="proj-tags-col">
+            <span class="tag tag-rose">Publication</span>
+            <span class="tag tag-dark">Land Restoration</span>
+            <span class="tag tag-dark">Dryland Africa</span>
+            <span class="tag tag-dark">ETFRN / ICRAF</span>
+          </div>
+          <a href="https://regreeningafrica.org/wp-content/uploads/2021/01/ETFRNnews60-Restoring-African-Drylands.pdf" target="_blank" class="link-arrow">Read Publication →</a>
+        </div>
+        <div class="proj-content">
+          <h2 class="proj-headline">Regreening Africa: A Bottom-up<br><em>Transformation of Degraded Lands</em></h2>
+          <div class="proj-body">
+            <p>
+              Contributing author to this ETFRN publication, produced with World Agroforestry
+              (ICRAF) as part of the Regreening Africa programme — one of the largest landscape
+              restoration initiatives on the continent, operating across Ethiopia, Ghana, Kenya,
+              Mali, Niger, Rwanda, and Senegal.
+            </p>
+            <p>
+              The publication examines farmer-managed natural regeneration and community-led
+              land restoration approaches that have transformed degraded dryland landscapes
+              across Sub-Saharan Africa — not through top-down intervention, but through
+              enabling the conditions for natural recovery and local stewardship. My contribution
+              drew on stakeholder engagement and ecosystem research from the field, translating
+              observations and data into structured, evidence-based analysis that informs
+              restoration programme design.
+            </p>
+
+            <div class="proj-callout">
+              Land-based carbon projects — afforestation, reforestation, improved land
+              management — depend on exactly the kind of community engagement, baseline
+              ecological assessment, and long-term monitoring capacity that this research
+              was built around. Understanding what landscape restoration actually looks like
+              on the ground is what separates credible carbon project developers from those
+              who mistake paper methodologies for field reality.
+            </div>
+
+            <div class="proj-expertise-bar">
+              <span class="proj-expertise-label">Demonstrates:</span>
+              <span class="tag tag-dark">Field research &amp; ecosystem assessment</span>
+              <span class="tag tag-dark">Community-based conservation</span>
+              <span class="tag tag-dark">Land-based carbon project grounding</span>
+              <span class="tag tag-dark">Multi-country programme analysis</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="footer-name">Stephanie Ojee</span>
+  <ul class="footer-nav">
+    <li><a href="about.html">About</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Stephanie Ojee</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(73,49,41,0.07)' : 'none';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>

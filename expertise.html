@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expertise — Stephanie Ojee</title>
+  <style>
+/* ── SHARED ── */
+/* ═══════════════════════════════════════════════
+   STEPHANIE OJEE — Shared Stylesheet
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+:root {
+  --cream:  #ffeedb;
+  --peach:  #ffdec7;
+  --rose:   #efa3a0;
+  --plum:   #8b597b;
+  --earth:  #493129;
+  --ink:    #2a1a10;
+  --font-serif: 'Nanum Myeongjo', Georgia, serif;
+  --font-sans:  'Nanum Gothic', sans-serif;
+  --nav-h: 70px;
+  --max-w: 1160px;
+  --gutter: 4rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--earth);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-top: var(--nav-h);
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── NAV ──────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--gutter);
+  background: rgba(255,238,219,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(73,49,41,0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--earth);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--plum);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { opacity: 1; }
+.nav-links a.active::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
+
+/* ─── PAGE HERO ─────────────────────── */
+.page-hero {
+  background: var(--earth);
+  padding: 5rem var(--gutter) 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  right: -1rem; bottom: -3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(10rem, 20vw, 22rem);
+  font-weight: 800;
+  color: rgba(255,238,219,0.035);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.page-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--plum);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.page-title em { font-style: italic; color: var(--rose); }
+
+.page-subtitle {
+  max-width: 540px;
+  margin-top: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,238,219,0.55);
+}
+
+/* ─── SECTION LABEL ─────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--rose);
+}
+
+.section-label.light { color: var(--rose); }
+.section-label.light::before { background: var(--plum); }
+
+/* ─── BUTTONS ───────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--earth);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--earth);
+  transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover { background: transparent; color: var(--earth); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rose);
+  transition: gap 0.2s, color 0.2s;
+}
+.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
+
+/* ─── TAGS ──────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+}
+.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
+.tag-plum  { background: var(--plum);          color: var(--cream); }
+.tag-rose  { background: var(--rose);          color: var(--earth); }
+.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
+.tag-peach { background: var(--peach);         color: var(--earth); }
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 2rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,238,219,0.4);
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,238,219,0.28);
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--rose); }
+.footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255,238,219,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ────────────────────── */
+@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
+@media (max-width: 768px) {
+  :root { --gutter: 1.5rem; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--cream);
+    padding: 2rem var(--gutter);
+    border-top: 1px solid rgba(73,49,41,0.1);
+    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .footer-nav { display: none; }
+  footer { justify-content: center; text-align: center; }
+}
+
+/* ── PAGE ── */
+
+/* ── SHARED ── */
+/* ═══════════════════════════════════════════════
+   STEPHANIE OJEE — Shared Stylesheet
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+:root {
+  --cream:  #ffeedb;
+  --peach:  #ffdec7;
+  --rose:   #efa3a0;
+  --plum:   #8b597b;
+  --earth:  #493129;
+  --ink:    #2a1a10;
+  --font-serif: 'Nanum Myeongjo', Georgia, serif;
+  --font-sans:  'Nanum Gothic', sans-serif;
+  --nav-h: 70px;
+  --max-w: 1160px;
+  --gutter: 4rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--earth);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-top: var(--nav-h);
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── NAV ──────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--gutter);
+  background: rgba(255,238,219,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(73,49,41,0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--earth);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--plum);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { opacity: 1; }
+.nav-links a.active::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
+
+/* ─── PAGE HERO ─────────────────────── */
+.page-hero {
+  background: var(--earth);
+  padding: 5rem var(--gutter) 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  right: -1rem; bottom: -3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(10rem, 20vw, 22rem);
+  font-weight: 800;
+  color: rgba(255,238,219,0.035);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.page-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--plum);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.page-title em { font-style: italic; color: var(--rose); }
+
+.page-subtitle {
+  max-width: 540px;
+  margin-top: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,238,219,0.55);
+}
+
+/* ─── SECTION LABEL ─────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--rose);
+}
+
+.section-label.light { color: var(--rose); }
+.section-label.light::before { background: var(--plum); }
+
+/* ─── BUTTONS ───────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--earth);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--earth);
+  transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover { background: transparent; color: var(--earth); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rose);
+  transition: gap 0.2s, color 0.2s;
+}
+.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
+
+/* ─── TAGS ──────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+}
+.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
+.tag-plum  { background: var(--plum);          color: var(--cream); }
+.tag-rose  { background: var(--rose);          color: var(--earth); }
+.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
+.tag-peach { background: var(--peach);         color: var(--earth); }
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 2rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,238,219,0.4);
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,238,219,0.28);
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--rose); }
+.footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255,238,219,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ────────────────────── */
+@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
+@media (max-width: 768px) {
+  :root { --gutter: 1.5rem; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--cream);
+    padding: 2rem var(--gutter);
+    border-top: 1px solid rgba(73,49,41,0.1);
+    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .footer-nav { display: none; }
+  footer { justify-content: center; text-align: center; }
+}
+
+/* ── PAGE ── */
+
+    .expertise-body {
+      padding: 6rem var(--gutter);
+    }
+
+    /* Four main domains */
+    .domains {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: var(--max-w);
+      margin-bottom: 6rem;
+    }
+
+    .domain-item {
+      display: grid;
+      grid-template-columns: 80px 260px 1fr;
+      gap: 4rem;
+      align-items: start;
+      padding: 3.5rem 0;
+      border-top: 1px solid rgba(73,49,41,0.12);
+    }
+
+    .domain-item:last-child { border-bottom: 1px solid rgba(73,49,41,0.12); }
+
+    .domain-num {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(73,49,41,0.12);
+      padding-top: 0.3rem;
+    }
+
+    .domain-left {}
+
+    .domain-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .domain-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--earth);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .domain-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 1rem;
+    }
+
+    .domain-body {
+      padding-top: 0.2rem;
+    }
+
+    .domain-body p {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--ink);
+      opacity: 0.75;
+      margin-bottom: 1rem;
+    }
+    .domain-body p:last-child { margin-bottom: 0; }
+
+    /* Certifications */
+    .certs-section {
+      background: var(--earth);
+      padding: 5rem var(--gutter);
+    }
+
+    .certs-inner {
+      max-width: var(--max-w);
+    }
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(255,238,219,0.1);
+      margin-top: 3rem;
+    }
+
+    .cert-card {
+      background: var(--earth);
+      padding: 2rem 1.8rem;
+      transition: background 0.3s;
+    }
+    .cert-card:hover { background: #5a3d2e; }
+
+    .cert-issuer {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.6rem;
+    }
+
+    .cert-name {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+
+    .cert-desc {
+      font-size: 0.83rem;
+      line-height: 1.65;
+      color: rgba(255,238,219,0.5);
+      margin-top: 0.6rem;
+    }
+
+    @media (max-width: 960px) {
+      .domain-item { grid-template-columns: 60px 1fr; gap: 2rem; }
+      .domain-left { grid-column: 2; }
+      .domain-body { grid-column: 2; }
+      .certs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .domain-item { grid-template-columns: 1fr; gap: 1rem; }
+      .domain-num { display: none; }
+      .certs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">S.Ojee</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="expertise.html" class="active">Expertise</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">Practice</div>
+    <p class="page-label">Expertise</p>
+    <h1 class="page-title">Four threads.<br>One <em>coherent</em> practice.</h1>
+    <p class="page-subtitle">
+      Each area of my work connects back to a central question: how do we make
+      sustainability data, frameworks, and governance systems actually work for
+      the institutions and communities that need them?
+    </p>
+  </div>
+
+  <section class="expertise-body">
+    <div class="domains">
+
+      <div class="domain-item">
+        <div class="domain-num">01</div>
+        <div class="domain-left">
+          <div class="domain-icon">◈</div>
+          <h2 class="domain-title">Carbon Markets &amp; Climate Finance</h2>
+          <div class="domain-tags">
+            <span class="tag tag-dark">Verra / VCS</span>
+            <span class="tag tag-dark">Gold Standard</span>
+            <span class="tag tag-dark">GHG Protocol</span>
+            <span class="tag tag-dark">SBTi</span>
+            <span class="tag tag-dark">Article 6.2</span>
+            <span class="tag tag-dark">CDM</span>
+            <span class="tag tag-dark">ITMOs</span>
+          </div>
+        </div>
+        <div class="domain-body">
+          <p>
+            Carbon markets are not a single system — they are a patchwork of competing
+            methodologies, jurisdictional rules, and evolving international frameworks
+            that demand fluency at multiple levels simultaneously. I work across all of them.
+          </p>
+          <p>
+            At the project level, this means understanding verification standards (Verra, Gold
+            Standard, CDM), the mechanics of additionality and baseline assessment, and how
+            project design documents translate scientific claims into tradable credits.
+            At the regulatory level in Kenya, this means knowing the Climate Change (Carbon
+            Markets) Regulations 2024 in granular detail — land classification rules,
+            benefit-sharing schedules, NEMA fee structures, and how Article 6.2 bilateral
+            authorization changes the financial calculus for every project seeking
+            international buyers.
+          </p>
+          <p>
+            I am UNFCCC RINGO-accredited with active exposure to Article 6 negotiations
+            and NDC framework consultations, and I have built public-use tools that make
+            Kenya's carbon market regulations navigable for developers and investors.
+          </p>
+        </div>
+      </div>
+
+      <div class="domain-item">
+        <div class="domain-num">02</div>
+        <div class="domain-left">
+          <div class="domain-icon">⬡</div>
+          <h2 class="domain-title">ESG Disclosure &amp; Advisory</h2>
+          <div class="domain-tags">
+            <span class="tag tag-dark">IFRS S1/S2</span>
+            <span class="tag tag-dark">TCFD</span>
+            <span class="tag tag-dark">CDP</span>
+            <span class="tag tag-dark">ISSB</span>
+            <span class="tag tag-dark">GRI Standards</span>
+            <span class="tag tag-dark">IFC Performance Standards</span>
+          </div>
+        </div>
+        <div class="domain-body">
+          <p>
+            ESG disclosure is where corporate sustainability commitments meet legal
+            obligation — and the gap between them is where most institutions currently
+            sit. My advisory work is designed to close that gap practically, not
+            ceremonially.
+          </p>
+          <p>
+            I am a certified practitioner across IFRS S1/S2, TCFD, CDP, ISSB, and
+            GRI Standards — the full stack of frameworks that financial institutions
+            and listed companies in Kenya need to understand as the 2027 compliance
+            deadline approaches. I have built ESMS implementation frameworks aligned
+            with IFC Performance Standards for active client engagements, and
+            developed ESG integration roadmaps that take organizations from baseline
+            carbon inventory to measurable reduction targets.
+          </p>
+          <p>
+            What distinguishes my approach is that I have delivered this across multiple
+            sectors simultaneously — banking, manufacturing, agriculture — and across
+            three East African regulatory environments, which means the frameworks I
+            produce are built to travel.
+          </p>
+        </div>
+      </div>
+
+      <div class="domain-item">
+        <div class="domain-num">03</div>
+        <div class="domain-left">
+          <div class="domain-icon">〜</div>
+          <h2 class="domain-title">Data, Analytics &amp; Visualization</h2>
+          <div class="domain-tags">
+            <span class="tag tag-dark">R Programming</span>
+            <span class="tag tag-dark">GIS / Spatial Analysis</span>
+            <span class="tag tag-dark">Data Visualization</span>
+            <span class="tag tag-dark">MRV Frameworks</span>
+            <span class="tag tag-dark">M&amp;E Design</span>
+          </div>
+        </div>
+        <div class="domain-body">
+          <p>
+            Environmental analysis is only as useful as its accessibility. The core skill
+            here is not technical fluency for its own sake — it is the ability to take raw,
+            complex environmental data and translate it into something that a CFO, a
+            development finance institution, or a policy team can act on.
+          </p>
+          <p>
+            My technical toolkit includes R programming for statistical analysis, GIS and
+            spatial mapping for conservation and land use work, and data visualization
+            for national-scale climate data. I have designed M&amp;E frameworks for
+            conservation programmes operating across arid and semi-arid landscapes,
+            built national GHG emissions dashboards from raw inventory data, and produced
+            quantitative analysis that informed executive-level governance strategy
+            at the UN.
+          </p>
+          <p>
+            The throughline is MRV — measurement, reporting, and verification — as
+            applied analytical infrastructure. Building systems that make environmental
+            performance legible, auditable, and useful is what connects my field
+            data work to my advisory work.
+          </p>
+        </div>
+      </div>
+
+      <div class="domain-item">
+        <div class="domain-num">04</div>
+        <div class="domain-left">
+          <div class="domain-icon">△</div>
+          <h2 class="domain-title">Multilateral Engagement &amp; Governance</h2>
+          <div class="domain-tags">
+            <span class="tag tag-dark">UNFCCC Processes</span>
+            <span class="tag tag-dark">UN Major Groups</span>
+            <span class="tag tag-dark">Member State Liaison</span>
+            <span class="tag tag-dark">Civil Society Coordination</span>
+            <span class="tag tag-dark">UNEA Processes</span>
+          </div>
+        </div>
+        <div class="domain-body">
+          <p>
+            Global environmental governance looks different from the inside. Working
+            at UNEP's Nairobi headquarters means understanding how 193 national interests
+            become, or fail to become, a collective position — and how civil society
+            organizations fit into that process, or don't.
+          </p>
+          <p>
+            My experience facilitating between UN Major Groups and Member State
+            representatives gave me a working understanding of how intergovernmental
+            processes actually function: where consensus is built informally,
+            how regional group dynamics shape outcomes, and what it takes to
+            produce analysis that influences decisions made in rooms where
+            the stakes are explicitly global.
+          </p>
+          <p>
+            This background informs how I approach client advisory — particularly
+            for institutions that need to navigate the relationship between national
+            regulatory requirements, regional frameworks, and international standards.
+            The ability to read governance systems, not just comply with them, is
+            a specific and useful skill.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /domains -->
+  </section>
+
+  <!-- Certifications -->
+  <section class="certs-section">
+    <div class="certs-inner">
+      <p class="section-label light">Certifications &amp; Credentials</p>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-issuer">UNFCCC</div>
+          <div class="cert-name">RINGO Observer — Article 6 &amp; NDC Dialogues</div>
+          <div class="cert-desc">Accredited observer in carbon markets negotiations and NDC framework consultations under the UNFCCC process.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">UNIDO</div>
+          <div class="cert-name">IFRS Sustainability Disclosure Standards</div>
+          <div class="cert-desc">Certified in IFRS S1 (general sustainability disclosures) and IFRS S2 (climate-related disclosures) under the ISSB framework.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Global Reporting Initiative / Coursera</div>
+          <div class="cert-name">GRI Standards Professional</div>
+          <div class="cert-desc">Certified practitioner in GRI Standards for comprehensive ESG disclosure and impact measurement reporting.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">AirMiners</div>
+          <div class="cert-name">Bootup — CDR Technology &amp; Market Development</div>
+          <div class="cert-desc">Specialized training in carbon dioxide removal technologies, emerging CDR methodologies, and measurement techniques for negative emissions.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Microsoft</div>
+          <div class="cert-name">Data Analytics Professional Certificate</div>
+          <div class="cert-desc">Professional certification in data analytics, visualization, and quantitative methods applicable to environmental and business intelligence work.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">NTNU Norway</div>
+          <div class="cert-name">MSc — Natural Resources Management</div>
+          <div class="cert-desc">Graduate-level specialization in environmental governance, international environmental law, and climate policy with R programming for quantitative research.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="footer-name">Stephanie Ojee</span>
+  <ul class="footer-nav">
+    <li><a href="about.html">About</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Stephanie Ojee</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(73,49,41,0.07)' : 'none';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Stephanie Ojee</title>
+  <style>
+/* ── SHARED ── */
+/* ═══════════════════════════════════════════════
+   STEPHANIE OJEE — Shared Stylesheet
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+:root {
+  --cream:  #ffeedb;
+  --peach:  #ffdec7;
+  --rose:   #efa3a0;
+  --plum:   #8b597b;
+  --earth:  #493129;
+  --ink:    #2a1a10;
+  --font-serif: 'Nanum Myeongjo', Georgia, serif;
+  --font-sans:  'Nanum Gothic', sans-serif;
+  --nav-h: 70px;
+  --max-w: 1160px;
+  --gutter: 4rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--earth);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-top: var(--nav-h);
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── NAV ──────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--gutter);
+  background: rgba(255,238,219,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(73,49,41,0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--earth);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--plum);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { opacity: 1; }
+.nav-links a.active::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
+
+/* ─── PAGE HERO ─────────────────────── */
+.page-hero {
+  background: var(--earth);
+  padding: 5rem var(--gutter) 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  right: -1rem; bottom: -3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(10rem, 20vw, 22rem);
+  font-weight: 800;
+  color: rgba(255,238,219,0.035);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.page-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--plum);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.page-title em { font-style: italic; color: var(--rose); }
+
+.page-subtitle {
+  max-width: 540px;
+  margin-top: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,238,219,0.55);
+}
+
+/* ─── SECTION LABEL ─────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--rose);
+}
+
+.section-label.light { color: var(--rose); }
+.section-label.light::before { background: var(--plum); }
+
+/* ─── BUTTONS ───────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--earth);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--earth);
+  transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover { background: transparent; color: var(--earth); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rose);
+  transition: gap 0.2s, color 0.2s;
+}
+.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
+
+/* ─── TAGS ──────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+}
+.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
+.tag-plum  { background: var(--plum);          color: var(--cream); }
+.tag-rose  { background: var(--rose);          color: var(--earth); }
+.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
+.tag-peach { background: var(--peach);         color: var(--earth); }
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 2rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,238,219,0.4);
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,238,219,0.28);
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--rose); }
+.footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255,238,219,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ────────────────────── */
+@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
+@media (max-width: 768px) {
+  :root { --gutter: 1.5rem; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--cream);
+    padding: 2rem var(--gutter);
+    border-top: 1px solid rgba(73,49,41,0.1);
+    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .footer-nav { display: none; }
+  footer { justify-content: center; text-align: center; }
+}
+
+/* ── PAGE ── */
+
+/* ── SHARED ── */
+/* ═══════════════════════════════════════════════
+   STEPHANIE OJEE — Shared Stylesheet
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+:root {
+  --cream:  #ffeedb;
+  --peach:  #ffdec7;
+  --rose:   #efa3a0;
+  --plum:   #8b597b;
+  --earth:  #493129;
+  --ink:    #2a1a10;
+  --font-serif: 'Nanum Myeongjo', Georgia, serif;
+  --font-sans:  'Nanum Gothic', sans-serif;
+  --nav-h: 70px;
+  --max-w: 1160px;
+  --gutter: 4rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--earth);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-top: var(--nav-h);
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── NAV ──────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--gutter);
+  background: rgba(255,238,219,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(73,49,41,0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--earth);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--plum);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { opacity: 1; }
+.nav-links a.active::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
+
+/* ─── PAGE HERO ─────────────────────── */
+.page-hero {
+  background: var(--earth);
+  padding: 5rem var(--gutter) 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  right: -1rem; bottom: -3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(10rem, 20vw, 22rem);
+  font-weight: 800;
+  color: rgba(255,238,219,0.035);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.page-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--plum);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.page-title em { font-style: italic; color: var(--rose); }
+
+.page-subtitle {
+  max-width: 540px;
+  margin-top: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,238,219,0.55);
+}
+
+/* ─── SECTION LABEL ─────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--rose);
+}
+
+.section-label.light { color: var(--rose); }
+.section-label.light::before { background: var(--plum); }
+
+/* ─── BUTTONS ───────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--earth);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--earth);
+  transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover { background: transparent; color: var(--earth); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rose);
+  transition: gap 0.2s, color 0.2s;
+}
+.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
+
+/* ─── TAGS ──────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+}
+.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
+.tag-plum  { background: var(--plum);          color: var(--cream); }
+.tag-rose  { background: var(--rose);          color: var(--earth); }
+.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
+.tag-peach { background: var(--peach);         color: var(--earth); }
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 2rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,238,219,0.4);
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,238,219,0.28);
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--rose); }
+.footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255,238,219,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ────────────────────── */
+@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
+@media (max-width: 768px) {
+  :root { --gutter: 1.5rem; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--cream);
+    padding: 2rem var(--gutter);
+    border-top: 1px solid rgba(73,49,41,0.1);
+    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .footer-nav { display: none; }
+  footer { justify-content: center; text-align: center; }
+}
+
+/* ── PAGE ── */
+
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(70vh - var(--nav-h));
+    }
+
+    .contact-left {
+      background: var(--earth);
+      padding: 6rem var(--gutter);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-left-deco {
+      position: absolute;
+      bottom: -4rem; right: -2rem;
+      font-family: var(--font-serif);
+      font-size: 22vw;
+      font-weight: 800;
+      color: rgba(255,238,219,0.03);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .contact-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 800;
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 2rem;
+    }
+
+    .contact-headline em { font-style: italic; color: var(--rose); }
+
+    .contact-blurb {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(255,238,219,0.55);
+      max-width: 440px;
+      margin-bottom: 3rem;
+    }
+
+    .context-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .context-list li {
+      font-size: 0.88rem;
+      color: rgba(255,238,219,0.5);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .context-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rose);
+    }
+
+    .contact-right {
+      background: var(--peach);
+      padding: 6rem var(--gutter);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1rem;
+    }
+
+    .contact-link-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid rgba(73,49,41,0.12);
+    }
+
+    .contact-link-item:first-child { border-top: 1px solid rgba(73,49,41,0.12); }
+
+    .contact-link-type {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--plum);
+    }
+
+    .contact-link-value {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--earth);
+      transition: color 0.2s;
+    }
+
+    .contact-link-value:hover { color: var(--plum); }
+
+    .contact-link-sub {
+      font-size: 0.8rem;
+      color: var(--earth);
+      opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+      .contact-body { grid-template-columns: 1fr; }
+      .contact-left-deco { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">S.Ojee</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">Hello</div>
+    <p class="page-label">Contact</p>
+    <h1 class="page-title">Let's build<br>something <em>worth doing</em></h1>
+    <p class="page-subtitle">
+      Whether it's ESG strategy, climate finance, a data project, or a collaboration
+      you haven't quite named yet — I'd like to hear from you.
+    </p>
+  </div>
+
+  <div class="contact-body">
+    <div class="contact-left">
+      <div class="contact-left-deco" aria-hidden="true">S</div>
+      <p class="section-label light">What I'm available for</p>
+      <h2 class="contact-headline">Good work<br>finds its way to<br><em>the right people</em></h2>
+      <p class="contact-blurb">
+        I am based in Nairobi and available for engagements regionally and globally.
+        I'm particularly interested in conversations around Kenya's carbon market
+        development, IFRS S1/S2 readiness for financial institutions, and data
+        infrastructure for climate finance.
+      </p>
+      <ul class="context-list">
+        <li>ESG strategy and IFRS S1/S2 compliance advisory</li>
+        <li>Carbon market advisory — Kenya and East Africa</li>
+        <li>ESG capacity building and training programmes</li>
+        <li>Environmental data analysis and dashboard development</li>
+        <li>Research collaborations and publication partnerships</li>
+        <li>Speaking engagements and expert commentary</li>
+      </ul>
+    </div>
+
+    <div class="contact-right">
+      <p class="section-label">Get in Touch</p>
+      <div class="contact-links-list">
+        <div class="contact-link-item">
+          <span class="contact-link-type">Email</span>
+          <a href="mailto:stephanieojee@gmail.com" class="contact-link-value">stephanieojee@gmail.com</a>
+          <span class="contact-link-sub">Best for project enquiries</span>
+        </div>
+        <div class="contact-link-item">
+          <span class="contact-link-type">Phone</span>
+          <a href="tel:+254717207826" class="contact-link-value">+254 717 207 826</a>
+          <span class="contact-link-sub">Kenya / East Africa timezone</span>
+        </div>
+        <div class="contact-link-item">
+          <span class="contact-link-type">GitHub</span>
+          <a href="https://github.com/Steff-Ojee" target="_blank" class="contact-link-value">github.com/Steff-Ojee</a>
+          <span class="contact-link-sub">Tools, dashboards, and open projects</span>
+        </div>
+        <div class="contact-link-item">
+          <span class="contact-link-type">Location</span>
+          <span class="contact-link-value" style="cursor:default">Nairobi, Kenya</span>
+          <span class="contact-link-sub">Available for international travel and relocation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span class="footer-name">Stephanie Ojee</span>
+  <ul class="footer-nav">
+    <li><a href="about.html">About</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Stephanie Ojee</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(73,49,41,0.07)' : 'none';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>

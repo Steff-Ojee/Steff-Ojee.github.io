@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work — Stephanie Ojee</title>
+  <style>
+/* ── SHARED ── */
+/* ═══════════════════════════════════════════════
+   STEPHANIE OJEE — Shared Stylesheet
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+:root {
+  --cream:  #ffeedb;
+  --peach:  #ffdec7;
+  --rose:   #efa3a0;
+  --plum:   #8b597b;
+  --earth:  #493129;
+  --ink:    #2a1a10;
+  --font-serif: 'Nanum Myeongjo', Georgia, serif;
+  --font-sans:  'Nanum Gothic', sans-serif;
+  --nav-h: 70px;
+  --max-w: 1160px;
+  --gutter: 4rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--earth);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-top: var(--nav-h);
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── NAV ──────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--gutter);
+  background: rgba(255,238,219,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(73,49,41,0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--earth);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--plum);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { opacity: 1; }
+.nav-links a.active::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
+
+/* ─── PAGE HERO ─────────────────────── */
+.page-hero {
+  background: var(--earth);
+  padding: 5rem var(--gutter) 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  right: -1rem; bottom: -3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(10rem, 20vw, 22rem);
+  font-weight: 800;
+  color: rgba(255,238,219,0.035);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.page-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--plum);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.page-title em { font-style: italic; color: var(--rose); }
+
+.page-subtitle {
+  max-width: 540px;
+  margin-top: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,238,219,0.55);
+}
+
+/* ─── SECTION LABEL ─────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--plum);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem; height: 1px;
+  background: var(--rose);
+}
+
+.section-label.light { color: var(--rose); }
+.section-label.light::before { background: var(--plum); }
+
+/* ─── BUTTONS ───────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--earth);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--earth);
+  transition: background 0.25s, color 0.25s;
+}
+.btn-primary:hover { background: transparent; color: var(--earth); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rose);
+  transition: gap 0.2s, color 0.2s;
+}
+.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
+
+/* ─── TAGS ──────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+}
+.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
+.tag-plum  { background: var(--plum);          color: var(--cream); }
+.tag-rose  { background: var(--rose);          color: var(--earth); }
+.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
+.tag-peach { background: var(--peach);         color: var(--earth); }
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: 2rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,238,219,0.4);
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-nav a {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,238,219,0.28);
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--rose); }
+.footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255,238,219,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ────────────────────── */
+@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
+@media (max-width: 768px) {
+  :root { --gutter: 1.5rem; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--cream);
+    padding: 2rem var(--gutter);
+    border-top: 1px solid rgba(73,49,41,0.1);
+    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .footer-nav { display: none; }
+  footer { justify-content: center; text-align: center; }
+}
+
+/* ── PAGE ── */
+
+/* ── PAGE ── */
+
+
+    /* ═══ ARTICLE LAYOUT ══════════════════════════ */
+    .work-body {
+      padding: 6rem var(--gutter) 0;
+    }
+
+    .work-articles {
+      display: flex;
+      flex-direction: column;
+      max-width: var(--max-w);
+    }
+
+    .work-article {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 5rem;
+      padding: 5rem 0;
+      border-top: 1px solid rgba(73,49,41,0.1);
+    }
+
+    .work-article:last-child {
+      border-bottom: 1px solid rgba(73,49,41,0.1);
+    }
+
+    /* Meta column */
+    .article-meta {
+      padding-top: 0.4rem;
+      position: sticky;
+      top: calc(var(--nav-h) + 2rem);
+      height: fit-content;
+    }
+
+    .article-period {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-bottom: 0.4rem;
+    }
+
+    .article-org {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--earth);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .article-location {
+      font-size: 0.8rem;
+      color: var(--plum);
+      opacity: 0.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .article-domain {
+      display: inline-block;
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--rose);
+      color: var(--earth);
+      padding: 0.28rem 0.7rem;
+      border-radius: 2px;
+    }
+
+    /* Content column */
+    .article-content {}
+
+    .article-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 800;
+      color: var(--earth);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .article-headline em {
+      font-style: italic;
+      color: var(--plum);
+    }
+
+    .article-body p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--ink);
+      opacity: 0.78;
+      margin-bottom: 1.4rem;
+    }
+
+    .article-body p:last-child { margin-bottom: 0; }
+
+    .article-body strong {
+      font-weight: 700;
+      color: var(--earth);
+      opacity: 1;
+    }
+
+    .article-callout {
+      background: var(--peach);
+      border-left: 3px solid var(--plum);
+      padding: 1.4rem 1.8rem;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--earth);
+      font-style: italic;
+    }
+
+    /* ═══ TIMELINE ════════════════════════════════ */
+    .timeline-section {
+      background: var(--earth);
+      padding: 6rem var(--gutter);
+      overflow: hidden;
+    }
+
+    .timeline-inner {
+      max-width: var(--max-w);
+    }
+
+    .timeline-scroll-wrap {
+      margin-top: 4rem;
+      overflow-x: auto;
+      padding-bottom: 2rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--plum) rgba(255,238,219,0.1);
+    }
+
+    .timeline-scroll-wrap::-webkit-scrollbar { height: 4px; }
+    .timeline-scroll-wrap::-webkit-scrollbar-track { background: rgba(255,238,219,0.08); }
+    .timeline-scroll-wrap::-webkit-scrollbar-thumb { background: var(--plum); }
+
+    .timeline-track {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      min-width: 1400px;
+      padding: 0 2rem 0 0;
+    }
+
+    /* The spine line */
+    .timeline-track::before {
+      content: '';
+      position: absolute;
+      top: 110px;
+      left: 0; right: 0;
+      height: 1px;
+      background: rgba(255,238,219,0.15);
+      z-index: 0;
+    }
+
+    .tl-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      min-width: 130px;
+    }
+
+    /* Top label */
+    .tl-year {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.6rem;
+      text-align: center;
+    }
+
+    /* Connector to spine */
+    .tl-connector {
+      width: 1px;
+      background: rgba(255,238,219,0.2);
+      margin-bottom: 0;
+    }
+
+    .tl-connector.down { height: 30px; margin-bottom: 0; }
+    .tl-connector.up   { height: 30px; margin-top: 0; }
+
+    /* Dot on the spine */
+    .tl-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--rose);
+      border: 2px solid var(--earth);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      box-shadow: 0 0 0 3px rgba(239,163,160,0.2);
+    }
+
+    .tl-dot.major {
+      width: 14px; height: 14px;
+      background: var(--cream);
+      box-shadow: 0 0 0 4px rgba(255,238,219,0.15);
+    }
+
+    /* Card below/above */
+    .tl-card {
+      background: rgba(255,238,219,0.06);
+      border: 1px solid rgba(255,238,219,0.1);
+      padding: 1rem 1.2rem;
+      width: 130px;
+      transition: background 0.3s;
+      text-align: center;
+    }
+
+    .tl-card:hover { background: rgba(255,238,219,0.12); }
+
+    .tl-card-org {
+      font-family: var(--font-serif);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 0.3rem;
+    }
+
+    .tl-card-role {
+      font-size: 0.65rem;
+      color: rgba(255,238,219,0.5);
+      line-height: 1.4;
+    }
+
+    /* Items above the spine (odd) */
+    .tl-item.above {
+      flex-direction: column-reverse;
+    }
+
+    .tl-item.above .tl-year {
+      margin-bottom: 0;
+      margin-top: 0.6rem;
+    }
+
+    .tl-item.above .tl-card {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    /* Spine row that sits at timeline center */
+    .tl-spine-row {
+      position: absolute;
+      top: 110px;
+      left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      z-index: 0;
+    }
+
+    /* ═══ RESPONSIVE ══════════════════════════════ */
+    @media (max-width: 900px) {
+      .work-article {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .article-meta { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">S.Ojee</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">Work</div>
+    <p class="page-label">Work &amp; Experience</p>
+    <h1 class="page-title">A career built<br>across <em>contexts</em></h1>
+    <p class="page-subtitle">
+      From field sites in Kenya's arid lands to negotiating rooms at the United Nations —
+      the through-line has always been rigorous, grounded sustainability work.
+    </p>
+  </div>
+
+  <!-- ═══ ARTICLES ═══════════════════════════════ -->
+  <section class="work-body">
+    <div class="work-articles">
+
+      <!-- 01 — ARDENA -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">2025 — Present</div>
+          <div class="article-org">Ardena Consulting Limited</div>
+          <div class="article-location">Nairobi, Kenya</div>
+          <span class="article-domain">ESG Advisory</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">Building the advisory infrastructure<br>Kenya's ESG transition <em>actually needs</em></h2>
+          <div class="article-body">
+            <p>
+              Ardena Consulting was founded in January 2025 on a specific thesis: Kenya's
+              financial institutions and listed companies were approaching a mandatory compliance
+              deadline — IFRS S1/S2 by 2027 — with almost no advisory infrastructure designed
+              specifically for East African regulatory realities. The frameworks existed.
+              The expertise to implement them locally did not, at least not at scale.
+            </p>
+            <p>
+              The work of building Ardena has been the work of proving that thesis wrong by
+              filling the gap ourselves. Within six months of founding, we moved from concept
+              to active client engagement — developing ESMS implementation frameworks aligned
+              with IFC Performance Standards, building ESG training curricula covering Kenya,
+              Rwanda, and Tanzania regulatory contexts simultaneously, and positioning the firm
+              at the intersection of AI tooling and sustainability advisory.
+            </p>
+
+            <div class="article-callout">
+              The question we return to with every client engagement is the same: what would it
+              actually take for this institution to meet its sustainability obligations not just
+              on paper, but in practice? The answer is almost always more specific, more
+              operationally grounded, and more attentive to local context than the standard
+              advisory frameworks suggest.
+            </div>
+
+            <p>
+              The technical architecture behind Ardena's advisory draws on the full stack of
+              disclosure frameworks — IFRS S1/S2, TCFD, GRI, IFC Performance Standards —
+              but the real differentiator is implementation depth. Designing an ESMS is not
+              the same as designing one that a Nairobi-based financial institution's compliance
+              team can actually run. That gap — between framework and function — is where
+              Ardena works.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 — UNEP -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">Oct 2024 — May 2025</div>
+          <div class="article-org">United Nations Environment Programme</div>
+          <div class="article-location">Nairobi, Kenya</div>
+          <span class="article-domain">Governance</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">At the centre of global environmental governance — <em>how it actually works</em></h2>
+          <div class="article-body">
+            <p>
+              UNEP's Nairobi headquarters is where the formal architecture of global
+              environmental governance becomes visible. Sitting in that environment — facilitating
+              engagement between 9 Major Groups and 193 Member State representatives, coordinating
+              Group of Friends consultations, supporting the preparatory processes for UNEA-7 —
+              gives you an understanding of multilateral systems that no amount of external study can replicate.
+            </p>
+            <p>
+              The governance affairs work was substantive. Civil society access to intergovernmental
+              processes is structurally constrained in ways that are rarely discussed openly, and
+              much of the coordination work was about building the conditions under which genuine
+              engagement could happen — not just formal participation. The INC Plastic Pollution
+              stakeholder accreditation process, which I helped streamline across 5 UN regional
+              groups, is a concrete example of where procedural work has direct consequences for
+              who gets to speak in rooms where environmental commitments are made.
+            </p>
+
+            <div class="article-callout">
+              Global environmental governance is built on the gap between what countries commit
+              to in negotiating rooms and what they implement at home. Understanding that gap —
+              where it comes from, how it functions, and where it can be closed — is foundational
+              to any serious climate advisory practice.
+            </div>
+
+            <p>
+              The analytical work ran in parallel: producing quantitative analysis and data
+              visualizations that informed executive-level strategy decisions and stakeholder
+              engagement protocols. This is the kind of analysis that has to be both technically
+              defensible and politically readable — a combination that demands careful calibration
+              of what you present and how.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 — ILKERIN -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">Jan — Oct 2024</div>
+          <div class="article-org">Ilkerin Consulting</div>
+          <div class="article-location">Nairobi, Kenya</div>
+          <span class="article-domain">ESG · Capacity Building</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">What it actually takes to move an institution <em>toward sustainability</em></h2>
+          <div class="article-body">
+            <p>
+              ESG advisory at the institutional level is not primarily a technical challenge —
+              it is an organizational change challenge in which technical knowledge is
+              a necessary but insufficient condition. The work at Ilkerin made this clear
+              very quickly.
+            </p>
+            <p>
+              Delivering ESG capacity building programmes to 100+ professionals across banking,
+              manufacturing, and agricultural sectors means navigating the full spectrum of
+              institutional resistance: the CFO who understands that ESG reporting is coming
+              but sees it as a compliance cost rather than a business opportunity; the sustainability
+              team that has the motivation but not the technical grounding; the C-suite that
+              has committed publicly to carbon neutrality without a credible pathway to achieve it.
+              Each requires a different kind of engagement.
+            </p>
+            <p>
+              The roadmaps I developed for client organizations were designed to make the
+              pathway from baseline carbon inventory to measurable reduction target concrete
+              enough to act on — not aspirational documents that live in a sustainability
+              report, but operational plans with owners, timelines, and data requirements.
+              Achieving 95% participant satisfaction ratings across these programmes suggests
+              that the approach — technically rigorous, practically oriented, and honest about
+              difficulty — resonates.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 — OPF -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">2023</div>
+          <div class="article-org">OnePointFive Academy</div>
+          <div class="article-location">Remote / Global</div>
+          <span class="article-domain">Climate Finance</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">Deepening the technical foundation<br>of <em>climate finance practice</em></h2>
+          <div class="article-body">
+            <p>
+              The OnePointFive Academy fellowship is not a general sustainability programme —
+              it is an 8-week intensive designed to build practitioner-grade expertise in
+              climate finance and carbon markets, and the cohort of 500+ professionals from
+              40+ countries reflects that ambition. Being selected from a competitive global
+              pool for this programme was meaningful precisely because of the specificity of
+              what it offers.
+            </p>
+            <p>
+              The technical depth covered here — Net Zero transition planning, GHG Protocol
+              implementation, SBTi target-setting methodology, TCFD, CDP, and ISSB disclosure
+              frameworks — maps almost exactly onto the skills that institutions preparing for
+              Kenya's 2027 IFRS S1/S2 compliance deadline need from their advisors. This was
+              not coincidental curriculum design; these are the frameworks that have become the
+              operating standards of global corporate sustainability.
+            </p>
+            <p>
+              The quantitative approaches to carbon credit valuation and additionality assessment
+              developed during this fellowship — working alongside practitioners from
+              development finance institutions, major corporates, and specialized climate
+              funds — built the analytical confidence that makes the difference between
+              knowing what a framework requires and knowing whether a specific project
+              actually meets it.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 — Norway -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">2022 — 2023</div>
+          <div class="article-org">TEDx Trondheim &amp; The Sustainability Centre</div>
+          <div class="article-location">Trondheim, Norway</div>
+          <span class="article-domain">Consulting · Events</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">The Norwegian chapter: research, production, and <em>a different environmental context</em></h2>
+          <div class="article-body">
+            <p>
+              The two years in Trondheim, completing an MSc at NTNU, were not just academic —
+              they were a deliberate exposure to how sustainability is practiced in a different
+              institutional and regulatory environment. Norway's approach to environmental
+              governance, urban planning, and corporate responsibility operates from different
+              premises than Kenya's, and understanding both is what makes the comparative
+              analysis I do credible.
+            </p>
+            <p>
+              At The Sustainability Centre, I established the environmental consulting
+              department from inception — developing service offerings, operational workflows,
+              and client engagement frameworks for an emerging advisory firm. Creating and
+              delivering sustainability training curricula during UN Trade Week was an early
+              test of whether I could translate technical environmental knowledge into something
+              that non-specialist audiences could act on. The answer, it turned out, was yes,
+              with significant effort toward clarity and framing.
+            </p>
+            <p>
+              TEDx Trondheim was a different kind of work entirely — managing the complete
+              production lifecycle for 5 thematic event sessions spanning innovation, technology,
+              and social impact. Partnership cultivation, logistics, stakeholder coordination
+              under time pressure. These are skills that do not appear in most sustainability
+              CVs, but they are the operational scaffolding that makes everything else possible.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 — ECOVIBE -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">2021 — 2022</div>
+          <div class="article-org">EcoVibe Kenya</div>
+          <div class="article-location">Nairobi, Kenya</div>
+          <span class="article-domain">Entrepreneurship</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">The first attempt at building something <em>from nothing</em></h2>
+          <div class="article-body">
+            <p>
+              EcoVibe Kenya was the beginning of a recurring theme in my career: identifying
+              a gap in how environmental expertise reaches the organizations that need it, and
+              attempting to build something to fill it. The execution in 2021 was early-stage —
+              market research, proposal writing, client acquisition, website development — but
+              the logic was sound, and it established the entrepreneurial disposition that
+              eventually became Ardena.
+            </p>
+            <p>
+              The research work during this period — on Kenyan environmental impact assessment
+              frameworks, international sustainability reporting standards, and the landscape
+              of environmental services demand in East Africa — built the market intelligence
+              that informed how I have approached business development ever since. Understanding
+              what clients actually need, rather than what they say they need, is a skill that
+              is difficult to teach and mostly learned by doing.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 07 — RAE -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">2020 — 2021</div>
+          <div class="article-org">Rehabilitation of Arid Environments Ltd</div>
+          <div class="article-location">Kenya</div>
+          <span class="article-domain">Conservation · Field</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">Field conservation in Kenya's arid lands — <em>where data meets the ground</em></h2>
+          <div class="article-body">
+            <p>
+              The work at RAE Ltd was field work in the proper sense — community-based
+              conservation programmes across arid and semi-arid land sites, direct engagement
+              with local stakeholders on climate resilience initiatives, GIS mapping that covered
+              100% of project intervention areas. This is where environmental data acquires
+              its meaning: not as numbers in a report, but as information grounded in
+              specific landscapes, specific communities, and specific ecological conditions.
+            </p>
+            <p>
+              The GIS and spatial analysis work here built the technical foundation for
+              everything I have done with environmental data since. Establishing baseline
+              spatial data for monitoring and evaluation across multiple field sites — while
+              also deploying a digital knowledge-sharing platform that improved cross-team
+              coordination efficiency by 50% — required holding the technical and the
+              operational dimensions of a programme simultaneously.
+            </p>
+            <p>
+              The relationship-building with government authorities that informed land restoration
+              policy development is a less visible but equally significant part of this period.
+              Bridging community needs with national environmental priorities is a specific
+              kind of translation work, and it taught me a great deal about how policy
+              actually gets made — or doesn't — at the intersection of community reality
+              and government process.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 08 — ICRAF -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">2019 — 2020</div>
+          <div class="article-org">World Agroforestry (ICRAF)</div>
+          <div class="article-location">Nairobi, Kenya</div>
+          <span class="article-domain">Research · Communications</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">Agroforestry, ecosystem research, and learning<br>to write for <em>a global audience</em></h2>
+          <div class="article-body">
+            <p>
+              World Agroforestry is one of the foremost research institutions in landscape
+              and ecosystem science, and working there across 2019 and 2020 meant being
+              embedded in a research environment that takes the relationship between land
+              use, smallholder farming systems, and ecosystem function seriously as a
+              scientific question.
+            </p>
+            <p>
+              The project communications and stakeholder coordination work spanned research
+              initiatives across multiple Sub-Saharan African countries — which meant
+              managing the complexity of multi-country programme communication while also
+              contributing data analysis to peer-reviewed publications. The ETFRN publication
+              on Regreening Africa that emerged from this period is a direct output of that work.
+            </p>
+            <p>
+              Learning to write for a global scientific and policy audience — to produce
+              analysis that is technically grounded, clearly communicated, and readable
+              by decision-makers who are not specialists — is a craft that this role
+              demanded and that has shaped every piece of analytical writing I have
+              produced since.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 09 — MINISTRY OF AGRICULTURE -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">Jun — Aug 2018</div>
+          <div class="article-org">Ministry of Agriculture, Livestock, Irrigation &amp; Fisheries</div>
+          <div class="article-location">Nairobi, Kenya</div>
+          <span class="article-domain">Policy · Agriculture</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">An early lesson in how <em>government policy is actually made</em></h2>
+          <div class="article-body">
+            <p>
+              Working inside a government ministry as a student is a particular kind of education —
+              one in the gap between policy intention and institutional reality. At the Ministry of
+              Agriculture, Livestock, Irrigation and Fisheries, I was not filing paperwork.
+              I was contributing research to a government funding proposal for irrigation
+              infrastructure: real policy work, with real consequences, during my undergraduate studies.
+            </p>
+            <p>
+              The Kenya-Israeli agricultural exchange programme added a different dimension —
+              coordinating the induction of students preparing for international knowledge transfer
+              on irrigation technologies and sustainable farming practices. That was a first
+              exposure to the diplomatic and logistical dimensions of international development
+              programming: understanding not just what the programme was supposed to achieve,
+              but the human infrastructure required to make it actually happen on the ground.
+            </p>
+            <p>
+              The reporting discipline established here has stayed with me. Submitting structured
+              weekly reports directly to a supervisor — synthesizing field observation into
+              actionable guidance, receiving corrections, refining the analysis — is a practice
+              that sounds simple and is, in fact, the foundation of all serious analytical work.
+              You learn to be accountable to evidence, not just to effort.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10 — LAFARGE ECOSYSTEMS -->
+      <article class="work-article">
+        <div class="article-meta">
+          <div class="article-period">Jun — Sep 2017</div>
+          <div class="article-org">Lafarge EcoSystems (Bamburi Cement)</div>
+          <div class="article-location">Mombasa, Kenya</div>
+          <span class="article-domain">Biodiversity · Rehabilitation</span>
+        </div>
+        <div class="article-content">
+          <h2 class="article-headline">Haller Park and the concrete possibility of <em>ecological recovery</em></h2>
+          <div class="article-body">
+            <p>
+              Haller Park — formerly a quarried limestone wasteland, today one of Kenya's most
+              visited wildlife sanctuaries — is perhaps the most compelling proof of concept
+              for ecological restoration in this country. To have worked there, at the beginning
+              of a career in environmental sustainability, was to have that career grounded in
+              something real: not a framework, not a report, but a place that had been broken
+              and rebuilt.
+            </p>
+            <p>
+              The work was precise and biological. Breeding three butterfly species for
+              introduction into the Butterfly Pavilion required understanding the specific
+              conditions each species needed — the host plants, the humidity, the sequencing
+              of life stages. Maintaining species catalogues, monitoring wildlife sanctuaries,
+              participating in the transformation of the degraded quarry floor into planted
+              butterfly habitat: this is what ecosystem restoration looks like at the level
+              of a single organism, which is ultimately the only level at which it is real.
+            </p>
+            <p>
+              Delivering educational tours to local and international visitors was a first
+              exercise in translating technical ecological knowledge for non-specialist
+              audiences — explaining why a particular plant was chosen, what role a particular
+              insect plays, how a food web reassembles in a recovering landscape.
+              <strong>That translation skill — from scientific process to human meaning — is
+              something I have been developing in every role since.</strong>
+            </p>
+            <p>
+              What Haller Park taught me, fundamentally, was that the trajectory of a degraded
+              ecosystem can be reversed — but only if you understand the species relationships,
+              the soil chemistry, and the long time horizons involved. I carry that lesson
+              into every conversation about land-based carbon projects, biodiversity net gain,
+              and nature-related financial disclosure. It is not an abstraction. I have seen it.
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /work-articles -->
+  </section>
+
+  <!-- ═══ VISUAL TIMELINE ════════════════════════ -->
+  <section class="timeline-section">
+    <div class="timeline-inner">
+      <p class="section-label light">Career Timeline</p>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.5rem); font-weight:800; color:var(--cream); line-height:1.1; margin-bottom: 0.5rem;">
+        Seven years. <em style="color:var(--rose); font-style:italic;">Three continents.</em>
+      </h2>
+      <p style="font-size:0.9rem; color:rgba(255,238,219,0.45); margin-bottom:0;">Scroll to explore the full arc →</p>
+
+      <div class="timeline-scroll-wrap">
+        <div class="timeline-track" role="list">
+
+          <!-- Each tl-item alternates above / below the spine -->
+          <!-- ABOVE = card on top, year on top -->
+          <!-- BELOW = card on bottom, year on bottom -->
+
+          <!-- 2017 -->
+          <div class="tl-item above" role="listitem">
+            <div class="tl-card">
+              <div class="tl-card-org">Lafarge EcoSystems</div>
+              <div class="tl-card-role">Conservation Intern</div>
+            </div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-dot"></div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-year">2017</div>
+          </div>
+
+          <!-- 2018 -->
+          <div class="tl-item" role="listitem">
+            <div class="tl-year">2018</div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-dot"></div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-card">
+              <div class="tl-card-org">Ministry of Agriculture</div>
+              <div class="tl-card-role">Agricultural Intern</div>
+            </div>
+          </div>
+
+          <!-- Spacer year 2019 -->
+          <div class="tl-item above" role="listitem">
+            <div class="tl-card">
+              <div class="tl-card-org">World Agroforestry</div>
+              <div class="tl-card-role">PM &amp; Comms Intern</div>
+            </div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-dot"></div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-year">2019 — 2020</div>
+          </div>
+
+          <!-- 2020–2021 -->
+          <div class="tl-item" role="listitem">
+            <div class="tl-year">2020 — 2021</div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-dot major"></div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-card">
+              <div class="tl-card-org">RAE Ltd</div>
+              <div class="tl-card-role">Environmental Programme Officer</div>
+            </div>
+          </div>
+
+          <!-- 2021–2022 -->
+          <div class="tl-item above" role="listitem">
+            <div class="tl-card">
+              <div class="tl-card-org">EcoVibe Kenya</div>
+              <div class="tl-card-role">Co-Founder</div>
+            </div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-dot"></div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-year">2021 — 2022</div>
+          </div>
+
+          <!-- NTNU -->
+          <div class="tl-item" role="listitem">
+            <div class="tl-year">2021 — 2023</div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-dot major"></div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-card">
+              <div class="tl-card-org">NTNU Norway</div>
+              <div class="tl-card-role">MSc Natural Resources</div>
+            </div>
+          </div>
+
+          <!-- Sustainability Centre -->
+          <div class="tl-item above" role="listitem">
+            <div class="tl-card">
+              <div class="tl-card-org">Sustainability Centre</div>
+              <div class="tl-card-role">Sustainability Consultant</div>
+            </div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-dot"></div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-year">2022</div>
+          </div>
+
+          <!-- TEDx -->
+          <div class="tl-item" role="listitem">
+            <div class="tl-year">2022 — 2023</div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-dot"></div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-card">
+              <div class="tl-card-org">TEDx Trondheim</div>
+              <div class="tl-card-role">Production Assistant</div>
+            </div>
+          </div>
+
+          <!-- OPF -->
+          <div class="tl-item above" role="listitem">
+            <div class="tl-card">
+              <div class="tl-card-org">OnePointFive Academy</div>
+              <div class="tl-card-role">Climate Finance Fellow</div>
+            </div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-dot major"></div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-year">2023</div>
+          </div>
+
+          <!-- Ilkerin -->
+          <div class="tl-item" role="listitem">
+            <div class="tl-year">2024</div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-dot major"></div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-card">
+              <div class="tl-card-org">Ilkerin Consulting</div>
+              <div class="tl-card-role">ESG Consultant</div>
+            </div>
+          </div>
+
+          <!-- UNEP -->
+          <div class="tl-item above" role="listitem">
+            <div class="tl-card">
+              <div class="tl-card-org">UNEP</div>
+              <div class="tl-card-role">Programme Support</div>
+            </div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-dot major"></div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-year">2024 — 2025</div>
+          </div>
+
+          <!-- Ardena -->
+          <div class="tl-item" role="listitem">
+            <div class="tl-year">2025 — Present</div>
+            <div class="tl-connector down" style="height:20px"></div>
+            <div class="tl-dot major" style="background:var(--rose); box-shadow: 0 0 0 5px rgba(239,163,160,0.25), 0 0 20px rgba(239,163,160,0.3);"></div>
+            <div class="tl-connector up" style="height:20px"></div>
+            <div class="tl-card" style="border-color: rgba(239,163,160,0.3); background: rgba(239,163,160,0.1);">
+              <div class="tl-card-org" style="color:var(--rose);">Ardena Consulting</div>
+              <div class="tl-card-role">Co-Founder, CTO</div>
+            </div>
+          </div>
+
+        </div><!-- /timeline-track -->
+      </div><!-- /scroll-wrap -->
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="footer-name">Stephanie Ojee</span>
+  <ul class="footer-nav">
+    <li><a href="about.html">About</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Stephanie Ojee</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(73,49,41,0.07)' : 'none';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
