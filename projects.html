@@ -310,309 +310,6 @@ footer {
 
 /* ── PAGE ── */
 
-/* ── SHARED ── */
-/* ═══════════════════════════════════════════════
-   STEPHANIE OJEE — Shared Stylesheet
-   ═══════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
-
-:root {
-  --cream:  #ffeedb;
-  --peach:  #ffdec7;
-  --rose:   #efa3a0;
-  --plum:   #8b597b;
-  --earth:  #493129;
-  --ink:    #2a1a10;
-  --font-serif: 'Nanum Myeongjo', Georgia, serif;
-  --font-sans:  'Nanum Gothic', sans-serif;
-  --nav-h: 70px;
-  --max-w: 1160px;
-  --gutter: 4rem;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--cream);
-  color: var(--earth);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.7;
-  overflow-x: hidden;
-  padding-top: var(--nav-h);
-}
-
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
-
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 9999;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-}
-
-/* ─── NAV ──────────────────────────── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--gutter);
-  background: rgba(255,238,219,0.93);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(73,49,41,0.08);
-}
-
-.nav-logo {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: var(--earth);
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--earth);
-  opacity: 0.5;
-  transition: opacity 0.2s;
-  position: relative;
-  padding-bottom: 3px;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 1.5px;
-  background: var(--plum);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover { opacity: 1; }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a.active { opacity: 1; }
-.nav-links a.active::after { width: 100%; }
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px;
-}
-.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
-
-/* ─── PAGE HERO ─────────────────────── */
-.page-hero {
-  background: var(--earth);
-  padding: 5rem var(--gutter) 4.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.page-hero-bg {
-  position: absolute;
-  right: -1rem; bottom: -3rem;
-  font-family: var(--font-serif);
-  font-size: clamp(10rem, 20vw, 22rem);
-  font-weight: 800;
-  color: rgba(255,238,219,0.035);
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.page-label {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--rose);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.page-label::before {
-  content: '';
-  display: block;
-  width: 2rem; height: 1px;
-  background: var(--plum);
-}
-
-.page-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  font-weight: 800;
-  line-height: 0.95;
-  color: var(--cream);
-  letter-spacing: -0.02em;
-}
-
-.page-title em { font-style: italic; color: var(--rose); }
-
-.page-subtitle {
-  max-width: 540px;
-  margin-top: 1.8rem;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(255,238,219,0.55);
-}
-
-/* ─── SECTION LABEL ─────────────────── */
-.section-label {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--plum);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.section-label::before {
-  content: '';
-  display: block;
-  width: 2rem; height: 1px;
-  background: var(--rose);
-}
-
-.section-label.light { color: var(--rose); }
-.section-label.light::before { background: var(--plum); }
-
-/* ─── BUTTONS ───────────────────────── */
-.btn-primary {
-  display: inline-block;
-  background: var(--earth);
-  color: var(--cream);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 0.85rem 2rem;
-  border: 2px solid var(--earth);
-  transition: background 0.25s, color 0.25s;
-}
-.btn-primary:hover { background: transparent; color: var(--earth); }
-
-.link-arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--rose);
-  transition: gap 0.2s, color 0.2s;
-}
-.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
-
-/* ─── TAGS ──────────────────────────── */
-.tag {
-  display: inline-block;
-  font-size: 0.63rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.22rem 0.65rem;
-  border-radius: 2px;
-}
-.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
-.tag-plum  { background: var(--plum);          color: var(--cream); }
-.tag-rose  { background: var(--rose);          color: var(--earth); }
-.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
-.tag-peach { background: var(--peach);         color: var(--earth); }
-
-/* ─── FOOTER ────────────────────────── */
-footer {
-  background: var(--ink);
-  padding: 2rem var(--gutter);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.footer-name {
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: rgba(255,238,219,0.4);
-}
-.footer-nav {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-.footer-nav a {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,238,219,0.28);
-  transition: color 0.2s;
-}
-.footer-nav a:hover { color: var(--rose); }
-.footer-copy {
-  font-size: 0.68rem;
-  color: rgba(255,238,219,0.2);
-  letter-spacing: 0.06em;
-}
-
-/* ─── RESPONSIVE ────────────────────── */
-@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
-@media (max-width: 768px) {
-  :root { --gutter: 1.5rem; }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 1.5rem;
-    position: absolute;
-    top: var(--nav-h); left: 0; right: 0;
-    background: var(--cream);
-    padding: 2rem var(--gutter);
-    border-top: 1px solid rgba(73,49,41,0.1);
-    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
-  }
-  .nav-links.open { display: flex; }
-  .nav-toggle { display: flex; }
-  .footer-nav { display: none; }
-  footer { justify-content: center; text-align: center; }
-}
-
 /* ── PAGE ── */
 
     .projects-body {
@@ -964,6 +661,111 @@ footer {
               <span class="tag tag-dark">Community-based conservation</span>
               <span class="tag tag-dark">Land-based carbon project grounding</span>
               <span class="tag tag-dark">Multi-country programme analysis</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 — ARDENA PLATFORM -->
+      <article class="proj-article">
+        <div class="proj-meta">
+          <div class="proj-number">05</div>
+          <div class="proj-year-label">2025 — Ongoing</div>
+          <div class="proj-tags-col">
+            <span class="tag tag-rose">Platform Build</span>
+            <span class="tag tag-dark">AI-Powered</span>
+            <span class="tag tag-dark">ESG Automation</span>
+            <span class="tag tag-dark">IFRS S1/S2</span>
+            <span class="tag tag-dark">Carbon Inventory</span>
+            <span class="tag tag-dark">East Africa</span>
+          </div>
+          <div style="margin-top:1rem; font-size:0.78rem; color:var(--plum); font-style:italic; line-height:1.5; opacity:0.85;">
+            Private platform — not publicly accessible
+          </div>
+        </div>
+        <div class="proj-content">
+          <h2 class="proj-headline">Ardena ESG Platform —<br><em>AI-Powered Compliance Infrastructure for East Africa</em></h2>
+          <div class="proj-body">
+            <p>
+              Most ESG advisory firms sell time and expertise. Ardena was built to sell
+              infrastructure — a platform that automates the analytical, data, and reporting
+              workflows that would otherwise consume the majority of a sustainability team's
+              capacity. As CTO and Co-Founder, designing and building this platform is the
+              most technically complex work I have done, and the most direct expression of
+              what I believe about how ESG advisory needs to evolve in East Africa.
+            </p>
+
+            <div class="proj-callout">
+              The platform is not a generic ESG tool. It is built specifically for the
+              regulatory and data environment of East Africa — calibrated to Kenya's
+              2027 IFRS S1/S2 compliance requirements, structured around the data
+              maturity of mid-market financial institutions, and designed to produce
+              disclosure-ready outputs rather than advisory reports that need a
+              consultant to interpret.
+            </div>
+
+            <p>
+              The core modules address the four most resource-intensive steps in
+              ESG compliance for a typical Kenyan financial institution. The
+              <strong>ESG data input and reporting automation</strong> layer replaces
+              the spreadsheet-and-email workflows that most institutions currently use
+              for sustainability data collection, replacing them with structured input
+              flows that feed directly into standardized reporting templates. The
+              <strong>carbon inventory calculation</strong> engine applies GHG Protocol
+              methodology to the specific asset classes, operational footprints, and
+              financed emissions profiles of East African financial sector clients —
+              not a generic Scope 1/2/3 calculator, but one calibrated to the sector's
+              actual data availability and the region's emissions factors.
+            </p>
+            <p>
+              The <strong>IFRS S1/S2 gap analysis</strong> module is perhaps the most
+              operationally significant. It maps a client's current governance structures,
+              risk identification processes, metrics, and disclosures against the specific
+              requirements of IFRS S1 (general sustainability disclosures) and IFRS S2
+              (climate-related disclosures), producing a prioritized gap register with
+              remediation guidance. For a financial institution beginning their compliance
+              journey in 2025 with a 2027 deadline, this turns a six-week consulting
+              engagement into a structured, repeatable self-assessment. The
+              <strong>document and disclosure generation</strong> layer then takes the
+              structured data produced by the other modules and generates IFRS-aligned
+              disclosure drafts, reducing the time from data to submission-ready document
+              by an order of magnitude.
+            </p>
+            <p>
+              The platform's intelligence layer is where domain expertise and technology
+              meet most directly. Its <strong>document intelligence</strong> capability
+              processes regulatory filings, existing sustainability reports, and financial
+              disclosures to extract structured, comparable data — turning documents that
+              would take a skilled analyst days to work through into structured inputs
+              that drive the rest of the platform. The <strong>disclosure generation</strong>
+              module applies that analysis to produce IFRS S1/S2-aligned draft outputs
+              calibrated to each client's specific governance structures, materiality
+              profile, and data environment — not generic templates, but drafts that
+              reflect where the client actually is. The <strong>compliance chat assistant</strong>
+              allows clients to interrogate their own compliance position in natural
+              language: asking which gaps carry the highest regulatory risk, what a
+              specific IFRS requirement means for their sector, or how to interpret
+              a materiality assessment result. The answers are grounded in their actual
+              data and position, not boilerplate guidance.
+            </p>
+            <p>
+              Building these features required the domain knowledge to define what
+              correct looks like — knowing what IFRS S1/S2 requires at the level of
+              individual disclosure requirements, how materiality is assessed across
+              different financial institution types, what Kenyan regulatory language
+              means in practice, and where ambiguities exist that a system should flag
+              rather than resolve. The technology operationalizes that expertise.
+              It does not replace it.
+            </p>
+
+            <div class="proj-expertise-bar">
+              <span class="proj-expertise-label">Demonstrates:</span>
+              <span class="tag tag-dark">AI product architecture &amp; LLM integration</span>
+              <span class="tag tag-dark">Regulatory knowledge engineering</span>
+              <span class="tag tag-dark">ESG platform design</span>
+              <span class="tag tag-dark">IFRS S1/S2 compliance workflow automation</span>
+              <span class="tag tag-dark">Carbon inventory methodology</span>
+              <span class="tag tag-dark">Technical leadership</span>
             </div>
           </div>
         </div>
