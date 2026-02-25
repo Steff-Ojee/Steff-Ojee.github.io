@@ -310,309 +310,6 @@ footer {
 
 /* ── PAGE ── */
 
-/* ── SHARED ── */
-/* ═══════════════════════════════════════════════
-   STEPHANIE OJEE — Shared Stylesheet
-   ═══════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap');
-
-:root {
-  --cream:  #ffeedb;
-  --peach:  #ffdec7;
-  --rose:   #efa3a0;
-  --plum:   #8b597b;
-  --earth:  #493129;
-  --ink:    #2a1a10;
-  --font-serif: 'Nanum Myeongjo', Georgia, serif;
-  --font-sans:  'Nanum Gothic', sans-serif;
-  --nav-h: 70px;
-  --max-w: 1160px;
-  --gutter: 4rem;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--cream);
-  color: var(--earth);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.7;
-  overflow-x: hidden;
-  padding-top: var(--nav-h);
-}
-
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: var(--plum); border-radius: 3px; }
-
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 9999;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-}
-
-/* ─── NAV ──────────────────────────── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--gutter);
-  background: rgba(255,238,219,0.93);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(73,49,41,0.08);
-}
-
-.nav-logo {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: var(--earth);
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--earth);
-  opacity: 0.5;
-  transition: opacity 0.2s;
-  position: relative;
-  padding-bottom: 3px;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 1.5px;
-  background: var(--plum);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover { opacity: 1; }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a.active { opacity: 1; }
-.nav-links a.active::after { width: 100%; }
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px;
-}
-.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--earth); }
-
-/* ─── PAGE HERO ─────────────────────── */
-.page-hero {
-  background: var(--earth);
-  padding: 5rem var(--gutter) 4.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.page-hero-bg {
-  position: absolute;
-  right: -1rem; bottom: -3rem;
-  font-family: var(--font-serif);
-  font-size: clamp(10rem, 20vw, 22rem);
-  font-weight: 800;
-  color: rgba(255,238,219,0.035);
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.page-label {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--rose);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.page-label::before {
-  content: '';
-  display: block;
-  width: 2rem; height: 1px;
-  background: var(--plum);
-}
-
-.page-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  font-weight: 800;
-  line-height: 0.95;
-  color: var(--cream);
-  letter-spacing: -0.02em;
-}
-
-.page-title em { font-style: italic; color: var(--rose); }
-
-.page-subtitle {
-  max-width: 540px;
-  margin-top: 1.8rem;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(255,238,219,0.55);
-}
-
-/* ─── SECTION LABEL ─────────────────── */
-.section-label {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--plum);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.section-label::before {
-  content: '';
-  display: block;
-  width: 2rem; height: 1px;
-  background: var(--rose);
-}
-
-.section-label.light { color: var(--rose); }
-.section-label.light::before { background: var(--plum); }
-
-/* ─── BUTTONS ───────────────────────── */
-.btn-primary {
-  display: inline-block;
-  background: var(--earth);
-  color: var(--cream);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 0.85rem 2rem;
-  border: 2px solid var(--earth);
-  transition: background 0.25s, color 0.25s;
-}
-.btn-primary:hover { background: transparent; color: var(--earth); }
-
-.link-arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--rose);
-  transition: gap 0.2s, color 0.2s;
-}
-.link-arrow:hover { gap: 0.7rem; color: var(--cream); }
-
-/* ─── TAGS ──────────────────────────── */
-.tag {
-  display: inline-block;
-  font-size: 0.63rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.22rem 0.65rem;
-  border-radius: 2px;
-}
-.tag-dark  { background: rgba(73,49,41,0.1);  color: var(--earth); }
-.tag-plum  { background: var(--plum);          color: var(--cream); }
-.tag-rose  { background: var(--rose);          color: var(--earth); }
-.tag-light { background: rgba(255,238,219,0.12); color: var(--peach); }
-.tag-peach { background: var(--peach);         color: var(--earth); }
-
-/* ─── FOOTER ────────────────────────── */
-footer {
-  background: var(--ink);
-  padding: 2rem var(--gutter);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.footer-name {
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: rgba(255,238,219,0.4);
-}
-.footer-nav {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-.footer-nav a {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,238,219,0.28);
-  transition: color 0.2s;
-}
-.footer-nav a:hover { color: var(--rose); }
-.footer-copy {
-  font-size: 0.68rem;
-  color: rgba(255,238,219,0.2);
-  letter-spacing: 0.06em;
-}
-
-/* ─── RESPONSIVE ────────────────────── */
-@media (max-width: 900px)  { :root { --gutter: 2.5rem; } }
-@media (max-width: 768px) {
-  :root { --gutter: 1.5rem; }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 1.5rem;
-    position: absolute;
-    top: var(--nav-h); left: 0; right: 0;
-    background: var(--cream);
-    padding: 2rem var(--gutter);
-    border-top: 1px solid rgba(73,49,41,0.1);
-    box-shadow: 0 8px 24px rgba(73,49,41,0.1);
-  }
-  .nav-links.open { display: flex; }
-  .nav-toggle { display: flex; }
-  .footer-nav { display: none; }
-  footer { justify-content: center; text-align: center; }
-}
-
 /* ── PAGE ── */
 
     .expertise-body {
@@ -767,11 +464,11 @@ footer {
   <div class="page-hero">
     <div class="page-hero-bg" aria-hidden="true">Practice</div>
     <p class="page-label">Expertise</p>
-    <h1 class="page-title">Four threads.<br>One <em>coherent</em> practice.</h1>
+    <h1 class="page-title">The disciplines<br><em>compound.</em></h1>
     <p class="page-subtitle">
-      Each area of my work connects back to a central question: how do we make
-      sustainability data, frameworks, and governance systems actually work for
-      the institutions and communities that need them?
+      Each area of practice makes the others sharper — carbon market fluency informs ESG advisory,
+      data skills make governance work credible, AI integration makes all of it scalable.
+      A growing set of capabilities that work better together than apart.
     </p>
   </div>
 
@@ -928,6 +625,59 @@ footer {
             regulatory requirements, regional frameworks, and international standards.
             The ability to read governance systems, not just comply with them, is
             a specific and useful skill.
+          </p>
+        </div>
+      </div>
+
+      <div class="domain-item">
+        <div class="domain-num">05</div>
+        <div class="domain-left">
+          <div class="domain-icon">⟡</div>
+          <h2 class="domain-title">AI Integration &amp; Intelligent Systems</h2>
+          <div class="domain-tags">
+            <span class="tag tag-dark">Document Intelligence</span>
+            <span class="tag tag-dark">Regulatory Reasoning</span>
+            <span class="tag tag-dark">Disclosure Generation</span>
+            <span class="tag tag-dark">Conversational AI</span>
+            <span class="tag tag-dark">ESG Workflow Automation</span>
+            <span class="tag tag-dark">Knowledge Engineering</span>
+          </div>
+        </div>
+        <div class="domain-body">
+          <p>
+            The most meaningful application of AI in sustainability advisory is not
+            generating text — it is making expert knowledge accessible at scale.
+            The decisions that determine whether an organization meets its IFRS S1/S2
+            obligations, structures a compliant carbon project, or builds a credible
+            net zero transition plan are grounded in dense, jurisdiction-specific
+            regulatory knowledge that most organizations do not have in-house.
+            The question I have been working on is how to encode that knowledge into
+            systems that can support those decisions reliably, without a consultant
+            in the room every time.
+          </p>
+          <p>
+            The Ardena platform is where this work is most developed. Its document
+            intelligence layer processes regulatory texts, client sustainability reports,
+            and financial disclosures to extract structured, comparable data — the
+            kind of analysis that would otherwise take a skilled analyst days to
+            produce manually. The disclosure generation module applies that analysis
+            to produce IFRS S1/S2-aligned draft outputs calibrated to a client's
+            specific governance structures, materiality profile, and data availability.
+            The platform's compliance chat assistant allows clients to interrogate
+            their own data against regulatory requirements in natural language —
+            asking which gaps carry the highest compliance risk, what a specific
+            IFRS requirement means for their sector, or how their current disclosures
+            compare to peer institutions — and receive answers grounded in their
+            actual position, not generic guidance.
+          </p>
+          <p>
+            What makes this work substantive rather than speculative is the domain
+            depth behind it. Knowing how to configure a document intelligence system
+            for ESG compliance requires knowing what IFRS S1/S2 actually requires,
+            how materiality is assessed across different financial institution types,
+            what Kenyan regulatory language means in practice, and where the
+            ambiguities are that a system needs to flag rather than resolve.
+            The AI does not replace that expertise — it operationalizes it.
           </p>
         </div>
       </div>
